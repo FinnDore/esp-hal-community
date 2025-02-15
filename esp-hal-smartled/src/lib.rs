@@ -18,9 +18,9 @@
 //! ```
 //!
 //! ## Feature Flags
-#![doc = document_features::document_features!()]
-#![doc(html_logo_url = "https://avatars.githubusercontent.com/u/46717278")]
-#![deny(missing_docs)]
+// #![doc = document_features::document_features!()]
+// #![doc(html_logo_url = "https://avatars.githubusercontent.com/u/46717278")]
+// #![deny(missing_docs)]
 #![no_std]
 
 use core::{fmt::Debug, slice::IterMut};
