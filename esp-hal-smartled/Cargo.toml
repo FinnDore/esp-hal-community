@@ -34,7 +34,7 @@ defmt = ["dep:defmt", "esp-idf-svc/defmt"]
 
 #! ### Chip Support Feature Flags
 ## Target the ESP32.
-esp32 = ["esp-backtrace/esp32", "esp-hal/esp32", "esp-println/esp32"]
+esp32 = ["esp-backtrace/esp32", "esp-idf-svc/esp32", "esp-println/esp32"]
 ## Target the ESP32-C3.
 esp32c3 = ["esp-backtrace/esp32c3", "esp-hal/esp32c3", "esp-println/esp32c3"]
 ## Target the ESP32-C6.
