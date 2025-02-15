@@ -30,7 +30,7 @@ smart-leds = "0.4.0"
 
 [features]
 ## Implement `defmt::Format` on certain types.
-defmt = ["dep:defmt", "esp-idf-svc/defmt"]
+defmt = ["dep:defmt" ]
 
 #! ### Chip Support Feature Flags
 ## Target the ESP32.
