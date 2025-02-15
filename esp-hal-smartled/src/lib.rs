@@ -27,7 +27,7 @@ use esp_idf_svc::hal::{
     gpio::OutputPin,
     peripheral::Peripheral,
 
-    rmt::{Pulse, TxChannel, TxChannelConfig, TxChannelCreator},
+    rmt::{Pulse, TxRmtConfig, RmtChannel}
     // rmt::{Error as RmtError, PulseCode, TxChannel, TxChannelConfig, TxChannelCreator},
 };
 use smart_leds_trait::{SmartLedsWrite, RGB8};
@@ -77,7 +77,7 @@ macro_rules! smartLedBuffer {
 /// interaction functionality using the `smart-leds` crate
 pub struct SmartLedsAdapter<TX, const BUFFER_SIZE: usize>
 where
-    TX: TxChannel,
+    TX: RmtChannel,
 {
     channel: Option<TX>,
     rmt_buffer: [u32; BUFFER_SIZE],
@@ -86,7 +86,7 @@ where
 
 impl<'d, TX, const BUFFER_SIZE: usize> SmartLedsAdapter<TX, BUFFER_SIZE>
 where
-    TX: TxChannel,
+    TX: RmtChannel,
 {
     /// Create a new adapter object that drives the pin using the RMT channel.
     pub fn new<C, O>(
