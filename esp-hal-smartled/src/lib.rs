@@ -25,7 +25,7 @@
 
 use core::{fmt::Debug, slice::IterMut};
 
-use esp_hal::{
+use esp_idf_svc::hal::{
     clock::Clocks,
     gpio::OutputPin,
     peripheral::Peripheral,
@@ -118,13 +118,13 @@ where
             channel: Some(channel),
             rmt_buffer,
             pulses: (
-                PulseCode::new (
+                PulseCode::new(
                     true,
                     ((SK68XX_T0H_NS * src_clock) / 1000) as u16,
                     false,
                     ((SK68XX_T0L_NS * src_clock) / 1000) as u16,
                 ),
-                PulseCode::new (
+                PulseCode::new(
                     true,
                     ((SK68XX_T1H_NS * src_clock) / 1000) as u16,
                     false,
