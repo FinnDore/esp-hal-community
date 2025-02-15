@@ -38,7 +38,7 @@ defmt = ["dep:defmt", "esp-idf-svc/defmt"]
 ## Target the ESP32-C3.
 # esp32c3 = ["esp-backtrace/esp32c3", "esp-hal/esp32c3", "esp-println/esp32c3"]
 ## Target the ESP32-C6.
-esp32c6 = ["esp-backtrace/esp32c6", "esp-idf-svc/esp32c6", "esp-println/esp32c6"]
+esp32c6 = ["esp-backtrace/esp32c6", "esp-println/esp32c6"]
 ## Target the ESP32-H2.
 # esp32h2 = ["esp-backtrace/esp32h2", "esp-hal/esp32h2", "esp-println/esp32h2"]
 ## Target the ESP32-S2.
