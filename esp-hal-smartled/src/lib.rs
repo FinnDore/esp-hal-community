@@ -18,7 +18,6 @@
 //! ```
 //!
 //! ## Feature Flags
-// #![deny(missing_docs)]
 #![no_std]
 
 use core::{fmt::Debug, slice::IterMut};
@@ -27,7 +26,9 @@ use esp_idf_svc::hal::{
     clock::Clocks,
     gpio::OutputPin,
     peripheral::Peripheral,
-    rmt::{Error as RmtError, PulseCode, TxChannel, TxChannelConfig, TxChannelCreator},
+
+    rmt::{Pulse, TxChannel, TxChannelConfig, TxChannelCreator},
+    // rmt::{Error as RmtError, PulseCode, TxChannel, TxChannelConfig, TxChannelCreator},
 };
 use smart_leds_trait::{SmartLedsWrite, RGB8};
 
@@ -45,14 +46,14 @@ pub enum LedAdapterError {
     /// Raised in the event that the provided data container is not large enough
     BufferSizeExceeded,
     /// Raised if something goes wrong in the transmission,
-    TransmissionError(RmtError),
+    // TransmissionError(RmtError),
 }
 
-impl From<RmtError> for LedAdapterError {
-    fn from(e: RmtError) -> Self {
-        LedAdapterError::TransmissionError(e)
-    }
-}
+// impl From<RmtError> for LedAdapterError {
+//     fn from(e: RmtError) -> Self {
+//         LedAdapterError::TransmissionError(e)
+//     }
+// }
 
 /// Macro to allocate a buffer sized for a specific number of LEDs to be
 /// addressed.
@@ -116,16 +117,14 @@ where
             channel: Some(channel),
             rmt_buffer,
             pulses: (
-                PulseCode::new(
+                Pulse::new_with_duration(
                     true,
                     ((SK68XX_T0H_NS * src_clock) / 1000) as u16,
-                    false,
                     ((SK68XX_T0L_NS * src_clock) / 1000) as u16,
                 ),
-                PulseCode::new(
+                Pulse::new_with_duration(
                     true,
                     ((SK68XX_T1H_NS * src_clock) / 1000) as u16,
-                    false,
                     ((SK68XX_T1L_NS * src_clock) / 1000) as u16,
                 ),
             ),
